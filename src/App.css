@@ -1,233 +1,233 @@
 .clock {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translateX(-50%);
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .clock__time {
-    font-size: 2rem;
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    transform: translateX(-50%);
+  font-size: 2rem;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .clock__tps {
-    font-size: 1.5rem;
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translateX(-50%);
+  font-size: 1.5rem;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .shop {
-    user-select: none;
-    float: right;
-    height: 100vh;
-    width: 25vw;
-    position: relative;
+  user-select: none;
+  float: right;
+  height: 100vh;
+  width: 25vw;
+  position: relative;
 }
 
-
 .producer {
-    cursor: pointer;
-    width: 100%;
-    height: 8vh;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    position: relative;
+  cursor: pointer;
+  width: 100%;
+  height: 8vh;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  position: relative;
 }
 
 .producer__name {
-    font-size: 2rem;
-    margin-top: 5px;
-    margin-left: 5px;
+  font-size: 2rem;
+  margin-top: 5px;
+  margin-left: 5px;
 }
 
 .producer__price {
-    font-size: 1.5rem;
-    margin-left: 5px;
-    position: absolute;
-    bottom: 5px;
+  font-size: 1.5rem;
+  margin-left: 5px;
+  position: absolute;
+  bottom: 5px;
 }
 
 .producer__negative {
-    font-size: 1.3rem;
-    position: absolute;
-    right: 45%;
-    top: 2.5px;
+  font-size: 1.3rem;
+  position: absolute;
+  right: 45%;
+  top: 2.5px;
 }
 
 .producer__amount {
-    font-size: 2rem;
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
+  font-size: 2rem;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .welcome__overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
 }
 
 .welcome__box {
-    background: #333333;
-    text-align: center;
-    padding: 50px;
-    width: 30vw;
+  background: #333333;
+  text-align: center;
+  padding: 50px;
+  width: 30vw;
+  position: relative;
 }
 
 .welcome__title {
-    margin: 0 0 20px 0;
-    color: #FFFFFF;
+  margin: 0 0 30px 0;
+  color: #ffffff;
 }
 
 .welcome__progressbar {
-    width: 100%;
-    height: 20px;
-    background: #555555;
-    margin: 20px 0;
-    overflow: hidden;
+  width: 100%;
+  height: 20px;
+  background: #555555;
+  margin: 10px 0;
+  overflow: hidden;
 }
 
 .welcome__progress {
-    width: 0%;
-    height: 100%;
-    background: #FFFFFF;
-    transition: width 0.1s ease;
+  width: 0%;
+  height: 100%;
+  background: #ffffff;
+  transition: width 0.1s ease;
 }
 
 /* Chromebooks */
 @media (max-width: 1366px) {
-    .clock {
-        height: 250px;
-        width: 250px;
-    }
+  .clock {
+    height: 250px;
+    width: 250px;
+  }
 
-    .clock__time {
-        font-size: 1.7rem;
-    }
+  .clock__time {
+    font-size: 1.7rem;
+  }
 
-    .producer__name {
-        font-size: 1.5rem;
-    }
+  .producer__name {
+    font-size: 1.5rem;
+  }
 
-    .producer__price {
-        font-size: 1rem;
-    }
+  .producer__price {
+    font-size: 1rem;
+  }
 
-    .producer__negative {
-        font-size: 1.2rem;
-        right: 40%;
-    }
+  .producer__negative {
+    font-size: 1.2rem;
+    right: 40%;
+  }
 
-    .producer__amount {
-        font-size: 1.5rem;
-    }
+  .producer__amount {
+    font-size: 1.5rem;
+  }
 }
 
 /* Large tablets and small laptops */
 @media (max-width: 1280px) {
-    .clock {
-        height: 230px;
-        width: 230px;
-    }
+  .clock {
+    height: 230px;
+    width: 230px;
+  }
 
-    .clock__time {
-        font-size: 1.6rem;
-    }
+  .clock__time {
+    font-size: 1.6rem;
+  }
 
-    .producer__name {
-        font-size: 1.4rem;
-    }
+  .producer__name {
+    font-size: 1.4rem;
+  }
 }
 
 /* Standard tablets */
 @media (max-width: 1024px) {
-    .clock {
-        height: 200px;
-        width: 200px;
-    }
+  .clock {
+    height: 200px;
+    width: 200px;
+  }
 
-    .clock__time {
-        font-size: 1.4rem;
-        top: 25%;
-    }
+  .clock__time {
+    font-size: 1.4rem;
+    top: 25%;
+  }
 
-    .producer__name {
-        font-size: 1.3rem;
-    }
+  .producer__name {
+    font-size: 1.3rem;
+  }
 
-    .producer__price {
-        font-size: 0.8rem;
-    }
+  .producer__price {
+    font-size: 0.8rem;
+  }
 
-    .producer__negative {
-        font-size: 1rem;
-        right: 30%;
-    }
+  .producer__negative {
+    font-size: 1rem;
+    right: 30%;
+  }
 
-    .producer__amount {
-        font-size: 1.3rem;
-    }
+  .producer__amount {
+    font-size: 1.3rem;
+  }
 }
 
 /* Small tablets and large phones */
 @media (max-width: 768px) {
-    .clock {
-        height: 180px;
-        width: 180px;
-    }
+  .clock {
+    height: 180px;
+    width: 180px;
+  }
 
-    .clock__time {
-        font-size: 1.2rem;
-        top: 30%;
-    }
+  .clock__time {
+    font-size: 1.2rem;
+    top: 30%;
+  }
 
-    .producer__name {
-        font-size: 1.2rem;
-    }
+  .producer__name {
+    font-size: 1.2rem;
+  }
 
-    .producer__price {
-        font-size: 0.8rem;
-    }
+  .producer__price {
+    font-size: 0.8rem;
+  }
 
-    .producer__amount {
-        font-size: 1.2rem;
-    }
+  .producer__amount {
+    font-size: 1.2rem;
+  }
 }
 
 /* Mobile phones */
 @media (max-width: 480px) {
-    .clock {
-        height: 150px;
-        width: 150px;
-    }
+  .clock {
+    height: 150px;
+    width: 150px;
+  }
 
-    .clock__time {
-        font-size: 1rem;
-        top: 35%;
-    }
+  .clock__time {
+    font-size: 1rem;
+    top: 35%;
+  }
 
-    .producer__name {
-        font-size: 1rem;
-    }
+  .producer__name {
+    font-size: 1rem;
+  }
 
-    .producer__price {
-        font-size: 0.7rem;
-    }
+  .producer__price {
+    font-size: 0.7rem;
+  }
 
-    .producer__amount {
-        font-size: 1rem;
-    }
+  .producer__amount {
+    font-size: 1rem;
+  }
 }
