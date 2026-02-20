@@ -35,15 +35,16 @@ function draw() {
   ctx.fillStyle = "#06040a";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+  const t = performance.now() / 1000;
+
   stars.forEach((star) => {
     const { x, y, size } = star;
     const [r, g, b] = star.color;
 
-    if (size > 1.0) {
-      const t = performance.now() / 1000;
-      const twinkle = Math.sin(t * star.twinkleSpeed + star.twinklePhase);
-      const opacity = star.opacity + twinkle * 0.15;
+    const twinkle = Math.sin(t * star.twinkleSpeed + star.twinklePhase);
+    const opacity = star.opacity + twinkle * 0.15;
 
+    if (size > 1.0) {
       const grd = ctx.createRadialGradient(x, y, 0, x, y, size * 4);
       grd.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${opacity * 0.3})`);
       grd.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
@@ -55,7 +56,7 @@ function draw() {
 
     ctx.beginPath();
     ctx.arc(x, y, size, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${star.opacity})`;
+    ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${opacity})`;
     ctx.fill();
   });
 }
