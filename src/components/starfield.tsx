@@ -1,69 +1,83 @@
 import { onMount } from "solid-js";
-/*
-#ffcc88  — orange-red   (cool, M-class)
-#ffd9a0  — warm orange  (K-class)
-#fff4e0  — yellow-white (sun-like, G-class)
-#ffffff  — pure white   (A-class)
-#e8f0ff  — blue-white   (hot, B-class)
-*/
 
 const colors = [
-  [255, 204, 136], // orange-red (cool, M-class)
-  [255, 217, 160], // warm-orange (K-class)
-  [255, 244, 224], // yellow-white (sun-like, G-class)
-  [255, 255, 255], // pure-white (A-class)
-  [232, 240, 255], // blue-white (hot, B-class)
+  [255, 204, 136],
+  [255, 217, 160],
+  [255, 244, 224],
+  [255, 255, 255],
+  [232, 240, 255],
 ];
 
 let canvas!: HTMLCanvasElement;
+let stars: Array<any> = [];
 
-function buildStars() {
-  const ctx = canvas.getContext("2d");
-  if (ctx === null) {
-    return;
-  }
-
-  for (let i = 1; i < 500; i++) {
-    const color: number = Math.ceil(Math.random() * colors.length) - 1;
+function build() {
+  stars = [];
+  for (let i = 0; i < 500; i++) {
+    const color = Math.floor(Math.random() * colors.length);
     const [r, g, b] = colors[color];
+    stars.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: Math.random() * 1.5 + 0.3,
+      opacity: Math.random() * 0.5 + 0.5,
+      color: [r, g, b],
+      twinkleSpeed: Math.random() * 0.8 + 0.2,
+      twinklePhase: Math.random() * Math.PI * 2,
+    });
+  }
+}
 
-    const x = Math.random() * canvas.width;
-    const y = Math.random() * canvas.height;
-    const size = Math.random() * 1.5 + 0.3;
-    const opacity = Math.random();
+function draw() {
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
+
+  ctx.fillStyle = "#06040a";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  stars.forEach((star) => {
+    const { x, y, size } = star;
+    const [r, g, b] = star.color;
 
     if (size > 1.0) {
+      const t = performance.now() / 1000;
+      const twinkle = Math.sin(t * star.twinkleSpeed + star.twinklePhase);
+      const opacity = star.opacity + twinkle * 0.15;
+
       const grd = ctx.createRadialGradient(x, y, 0, x, y, size * 4);
       grd.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${opacity * 0.3})`);
       grd.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
-
       ctx.beginPath();
-      ctx.arc(x, y, size * 4, 0, 2 * Math.PI);
+      ctx.arc(x, y, size * 4, 0, Math.PI * 2);
       ctx.fillStyle = grd;
       ctx.fill();
     }
 
     ctx.beginPath();
-    ctx.arc(x, y, size, 0, 2 * Math.PI);
-    ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${Math.random()})`;
+    ctx.arc(x, y, size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${star.opacity})`;
     ctx.fill();
-  }
+  });
 }
 
 export function Starfield() {
   onMount(() => {
-    const ctx = canvas.getContext("2d");
-    if (ctx === null) {
-      return;
-    }
-
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    build();
 
-    ctx.fillStyle = "#06040a";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      build();
+    });
 
-    buildStars();
+    function loop() {
+      draw();
+      requestAnimationFrame(loop);
+    }
+
+    loop();
   });
 
   return (
