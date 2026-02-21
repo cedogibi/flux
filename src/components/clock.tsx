@@ -77,23 +77,29 @@ const Clock: Component<ClockProps> = (props) => {
       ctx.stroke();
 
       ctx.beginPath();
-      ctx.arc(0, 0, radius / 20, 0, 2 * Math.PI);
+      ctx.arc(0, 0, radius * 0.04, 0, 2 * Math.PI);
       ctx.fillStyle = palette.highlight;
       ctx.fill();
 
+      ctx.beginPath();
+      ctx.lineWidth = 0.32;
+      ctx.arc(0, 0, radius / 10, 0, 2 * Math.PI);
       ctx.fillStyle = palette.dim;
-      ctx.font = radius * 0.15 + "px arial";
-      ctx.textBaseline = "middle";
-      ctx.textAlign = "center";
-      for (let num = 1; num < 13; num++) {
-        let ang = (num * Math.PI) / 6;
-        ctx.rotate(ang);
-        ctx.translate(0, -radius * 0.85);
-        ctx.rotate(-ang);
-        ctx.fillText(num.toString(), 0, 0);
-        ctx.rotate(ang);
-        ctx.translate(0, radius * 0.85);
-        ctx.rotate(-ang);
+      ctx.stroke();
+
+      ctx.fillStyle = palette.dim;
+      for (let i = 0; i < 12; i++) {
+        const a = (i / 12) * Math.PI * 2 - Math.PI / 2;
+        const r1 = radius * 0.88;
+        const r2 = i % 3 === 0 ? radius * 0.8 : radius * 0.84;
+
+        ctx.beginPath();
+        ctx.moveTo(Math.cos(a) * r1, Math.sin(a) * r1);
+        ctx.lineTo(Math.cos(a) * r2, Math.sin(a) * r2);
+        ctx.strokeStyle =
+          i % 3 === 0 ? "rgba(200,150,42,0.5)" : "rgba(200,150,42,0.2)";
+        ctx.lineWidth = i % 3 === 0 ? 1 : 0.5;
+        ctx.stroke();
       }
 
       const drawHand = (
@@ -121,9 +127,9 @@ const Clock: Component<ClockProps> = (props) => {
       minute = (minute * Math.PI) / 30;
       second = (second * Math.PI) / 30;
 
-      drawHand(hour, radius * 0.45, radius * 0.09, palette.highlight);
-      drawHand(minute, radius * 0.75, radius * 0.05, palette.text);
-      drawHand(second, radius * 0.9, radius * 0.02, palette.dim);
+      drawHand(hour, radius * 0.45, radius * 0.009 * 2, palette.highlight);
+      drawHand(minute, radius * 0.75, radius * 0.005 * 2, palette.text);
+      drawHand(second, radius * 0.9, radius * 0.002 * 2, palette.dim);
     });
   });
 
