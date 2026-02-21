@@ -6,6 +6,11 @@ export const palette = {
   face: "#0d0a12", // background
 };
 
+// Inject into :root at app startup
+Object.entries(palette).forEach(([key, value]) => {
+  document.documentElement.style.setProperty(`--color-${key}`, value);
+});
+
 export function opacity(percent: number): string {
   const hex = Math.round(percent * 2.55)
     .toString(16)

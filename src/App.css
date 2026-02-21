@@ -1,26 +1,29 @@
-.clock {
+/* LAYOUT */
+.clock,
+.clock__time,
+.clock__tps {
   position: absolute;
-  top: 40%;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.clock {
+  top: 40%;
+  width: clamp(150px, 20vw, 300px);
+  height: clamp(150px, 20vw, 300px);
 }
 
 .clock__time {
-  font-size: 2rem;
-  position: absolute;
   top: 25%;
-  left: 50%;
-  transform: translateX(-50%);
+  font-size: clamp(1rem, 1.5vw, 2rem);
 }
 
 .clock__tps {
-  font-size: 1.5rem;
-  position: absolute;
   top: 30%;
-  left: 50%;
-  transform: translateX(-50%);
+  font-size: clamp(0.8rem, 1.2vw, 1.5rem);
 }
 
+/* SHOP */
 .shop {
   user-select: none;
   float: right;
@@ -38,40 +41,43 @@
   position: relative;
 }
 
+.producer__name,
+.producer__amount {
+  font-size: clamp(1rem, 1.3vw, 2rem);
+}
+
 .producer__name {
-  font-size: 2rem;
-  margin-top: 5px;
-  margin-left: 5px;
-}
-
-.producer__price {
-  font-size: 1.5rem;
-  margin-left: 5px;
-  position: absolute;
-  bottom: 5px;
-}
-
-.producer__negative {
-  font-size: 1.3rem;
-  position: absolute;
-  right: 45%;
-  top: 2.5px;
+  margin: 5px 0 0 5px;
 }
 
 .producer__amount {
-  font-size: 2rem;
   position: absolute;
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
 }
 
+.producer__price,
+.producer__negative {
+  position: absolute;
+}
+
+.producer__price {
+  font-size: clamp(0.7rem, 1vw, 1.5rem);
+  margin-left: 5px;
+  bottom: 5px;
+}
+
+.producer__negative {
+  font-size: clamp(0.9rem, 1.1vw, 1.3rem);
+  right: 45%;
+  top: 2.5px;
+}
+
+/* WELCOME */
 .welcome__overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: rgba(0, 0, 0, 0.8);
   display: flex;
   align-items: center;
@@ -82,8 +88,8 @@
 .welcome__box {
   background: #333333;
   text-align: center;
-  padding: 50px;
-  width: 30vw;
+  padding: clamp(20px, 3vw, 50px);
+  width: clamp(280px, 30vw, 600px);
   position: relative;
 }
 
@@ -105,129 +111,4 @@
   height: 100%;
   background: #ffffff;
   transition: width 0.1s ease;
-}
-
-/* Chromebooks */
-@media (max-width: 1366px) {
-  .clock {
-    height: 250px;
-    width: 250px;
-  }
-
-  .clock__time {
-    font-size: 1.7rem;
-  }
-
-  .producer__name {
-    font-size: 1.5rem;
-  }
-
-  .producer__price {
-    font-size: 1rem;
-  }
-
-  .producer__negative {
-    font-size: 1.2rem;
-    right: 40%;
-  }
-
-  .producer__amount {
-    font-size: 1.5rem;
-  }
-}
-
-/* Large tablets and small laptops */
-@media (max-width: 1280px) {
-  .clock {
-    height: 230px;
-    width: 230px;
-  }
-
-  .clock__time {
-    font-size: 1.6rem;
-  }
-
-  .producer__name {
-    font-size: 1.4rem;
-  }
-}
-
-/* Standard tablets */
-@media (max-width: 1024px) {
-  .clock {
-    height: 200px;
-    width: 200px;
-  }
-
-  .clock__time {
-    font-size: 1.4rem;
-    top: 25%;
-  }
-
-  .producer__name {
-    font-size: 1.3rem;
-  }
-
-  .producer__price {
-    font-size: 0.8rem;
-  }
-
-  .producer__negative {
-    font-size: 1rem;
-    right: 30%;
-  }
-
-  .producer__amount {
-    font-size: 1.3rem;
-  }
-}
-
-/* Small tablets and large phones */
-@media (max-width: 768px) {
-  .clock {
-    height: 180px;
-    width: 180px;
-  }
-
-  .clock__time {
-    font-size: 1.2rem;
-    top: 30%;
-  }
-
-  .producer__name {
-    font-size: 1.2rem;
-  }
-
-  .producer__price {
-    font-size: 0.8rem;
-  }
-
-  .producer__amount {
-    font-size: 1.2rem;
-  }
-}
-
-/* Mobile phones */
-@media (max-width: 480px) {
-  .clock {
-    height: 150px;
-    width: 150px;
-  }
-
-  .clock__time {
-    font-size: 1rem;
-    top: 35%;
-  }
-
-  .producer__name {
-    font-size: 1rem;
-  }
-
-  .producer__price {
-    font-size: 0.7rem;
-  }
-
-  .producer__amount {
-    font-size: 1rem;
-  }
 }
